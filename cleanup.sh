@@ -6,7 +6,7 @@ sudo systemctl stop docker
 for c in `sudo crioctl ctr list | grep ^ID | cut -c5-`; do sudo crioctl ctr stop --id $c; sudo crioctl ctr remove --id $c ; done
 for c in `sudo crioctl pod list | grep ^ID | cut -c5-`; do sudo crioctl pod stop --id $c; sudo crioctl pod remove --id $c ; done
 
-udo systemctl stop crio
+sudo systemctl stop crio
 sudo rm -rf /var/lib/cni/*
 sudo rm -rf /var/run/crio/*
 sudo rm -rf /var/log/crio/*
