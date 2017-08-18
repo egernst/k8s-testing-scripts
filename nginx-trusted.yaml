@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   annotations:
-    io.kubernetes.cri-o.trusted: "true"
+    io.kubernetes.cri-o.TrustedSandbox: "true"
   name: nginx-trusted
 spec:
   containers:
