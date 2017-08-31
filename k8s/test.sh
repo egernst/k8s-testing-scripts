@@ -69,7 +69,7 @@ sudo -E kubectl taint nodes $master node-role.kubernetes.io/master:NoSchedule-
 
 sleep 15
 
-sudo -E kubectl create -f $DIR/nginx-trusted.yaml
-sudo -E kubectl create -f $DIR/nginx-untrusted.yaml
+sudo -E kubectl create -f $DIR/../nginx-trusted.yaml
+sudo -E kubectl create -f $DIR/../nginx-untrusted.yaml
 
 sudo -E kubectl get pods --all-namespaces -w
