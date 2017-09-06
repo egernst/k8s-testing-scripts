@@ -1,8 +1,17 @@
 Some helper files for quickly running a couple of k8s tests showcasing Clear Containers.
 
+From this, you should be able to quickly recreate https://asciinema.org/a/135837 and https://asciinema.org/a/134681
+
+test.sh contains a script which will do cleanup, bringup a single machine cluster, setup flannel
+
 ## Generic Example:
 
-test.sh contains a script which will do cleanup, bringup a single machine cluster, setup flannel and then startup 2 pods: a trusted nginx pod and an untrusted nginx pod.
+1. Start the cluster by using test.sh
+
+2. Start a trusted and untrusted pod:
+sudo -E kubectl create -f ../nginx-trusted.yaml
+sudo -E kubectl create -f ../nginx-untrusted.yaml
+
 
 
 ## Side Car Example:
