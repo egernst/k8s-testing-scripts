@@ -9,9 +9,11 @@ test.sh contains a script which will do cleanup, bringup a single machine cluste
 1. Start the cluster by using test.sh
 
 2. Start a trusted and untrusted pod:
+
+```
 sudo -E kubectl create -f ../nginx-trusted.yaml
 sudo -E kubectl create -f ../nginx-untrusted.yaml
-
+```
 
 
 ## Side Car Example:
