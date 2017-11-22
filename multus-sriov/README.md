@@ -1,7 +1,23 @@
-# Bring up cluster
+# Assumptions
 
 We assume that k8s is cleaned up and not running on the system (ie, you have run
 kubeadm reset if something was up prior).  
+
+We also assume that sriov and multus plugins are installed at /opt/cni/bin.  If not,
+user can grab the sources, build, and move binaries to the approprirate location.  For example:
+
+```
+go get github.com/intel-corp/multus-cni
+cd $GOPATH/src/github.com/intel-corp/multis-cni
+./build.sh
+sudo cp bin/multus /opt/cni/bin
+go get github.com/intel-corp/sriov-cni
+cd $GOPATH/src/github.com/intel-corp/sriov-cni
+./build.sh
+sudo cp bin/sriov /opt/cni/bin
+```
+
+# Bring up cluster
 
 User can run ``` ./bring-up-cluster.sh``` -- we describe what is done below:
 
