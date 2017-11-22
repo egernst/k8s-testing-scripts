@@ -7,15 +7,9 @@ We also assume that sriov and multus plugins are installed at /opt/cni/bin.  If 
 user can grab the sources, build, and move binaries to the approprirate location.  For example:
 
 ```
-go get github.com/intel-corp/multus-cni
-cd $GOPATH/src/github.com/intel-corp/multis-cni
-./build.sh
-sudo cp bin/multus /opt/cni/bin/
-
-go get github.com/intel-corp/sriov-cni
-cd $GOPATH/src/github.com/intel-corp/sriov-cni
-./build.sh
-sudo cp bin/sriov /opt/cni/bin/
+go get -v -u github.com/Intel-Corp/multus-cni/multus
+go get -v -u github.com/Intel-Corp/sriov-cni/sriov
+sudo cp $GOPATH/bin/multus $GOPATH/bin/sriov /opt/cni/bin/
 ```
 
 # Bring up cluster
