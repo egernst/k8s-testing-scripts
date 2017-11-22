@@ -1,0 +1,56 @@
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: s11-net
+plugin: bridge
+args: '[
+    {
+        "name": "s11-net",
+        "type": "bridge",
+        "bridge": "s11-net",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "10.1.10.0/24"
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: flan-net
+plugin: flannel
+args: '[
+    {
+        "name": "flan-net",
+        "type": "flannel",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "12.1.10.0/24"
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: sriov-net
+plugin: sriov
+args: '[
+    {
+        "name": "my-sriov-net",
+        "type": "sriov",
+        "if0": "enp1s0f0"
+        "ipam": {
+            "type": "host-local",
+            "subnet": "11.1.1.0/24"
+	    "routes": [
+              { "dst": "0.0.0.0/0" }
+	    ],
+	    "gateway": "11.1.1.1"
+        }
+    }
+]'
