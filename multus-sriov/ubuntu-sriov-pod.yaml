@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sriov-fun
+  annotations:
+    networks: '[
+        { "name": "s11-net" },
+        { "name": "sriov-net" }
+    ]'
+spec:
+  containers:
+  - name: ubuntu
+    image: egernst/network-testing-ubuntu
+    stdin: true
+    tty: true

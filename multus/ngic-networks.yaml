@@ -1,0 +1,71 @@
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: s11-net
+plugin: bridge
+args: '[
+    {
+        "name": "s11-net",
+        "type": "bridge",
+        "bridge": "s11-net",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "10.1.10.0/24"
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: s1u-net
+plugin: bridge
+args: '[
+    {
+        "name": "s1u-net",
+        "type": "bridge",
+        "bridge": "s1u-net",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "11.1.1.0/24"
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: sgi-net
+plugin: bridge
+args: '[
+    {
+        "name": "sgi-net",
+        "type": "bridge",
+        "bridge": "sgi-net",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "13.1.1.0/24"
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: cpdp-net
+plugin: bridge
+args: '[
+    {
+        "name": "cpdp-net",
+        "type": "bridge",
+        "bridge": "cpdp-net",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "172.26.0.0/24"
+        }
+    }
+]'
