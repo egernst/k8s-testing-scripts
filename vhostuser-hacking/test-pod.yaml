@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod # TODO make these deployments later
+metadata:
+  name: test-pod 
+  annotations:
+    networks: '[
+        { "name": "br-net-1" },
+        { "name": "br-net-2" },
+        { "name": "vhu-net-1" }
+    ]'
+spec:
+  containers:
+  - name: test-pod
+    image: "ubuntu:14.04"
+    stdin: true
+    tty: true
