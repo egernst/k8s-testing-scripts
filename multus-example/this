@@ -1,0 +1,40 @@
+root      30019  29990 17 14:48 ?        00:00:04 /usr/bin/qemu-lite-system-x86_64
+ -name pod-d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b
+ -uuid 359846b2-92c7-4918-adc3-656a3c0c8699
+ -machine pc,accel=kvm,kernel_irqchip,nvdimm
+ -cpu host
+ -qmp unix:/run/virtcontainers/pods/d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b/359846b2-92c7-491,server,nowait
+ -qmp unix:/run/virtcontainers/pods/d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b/359846b2-92c7-491,server,nowait
+ -m 2048M,slots=2,maxmem=97635M
+ -smp 32,cores=32,threads=1,sockets=1
+ -device virtio-9p-pci,fsdev=ctr-9p-0,mount_tag=ctr-rootfs-0
+ -fsdev local,id=ctr-9p-0,path=/var/lib/containers/storage/overlay/0cfd05f6880cef4f163faded98b898320eef1fcfc439d20b2f53746afeee7559/merged,security_model=none
+ -device virtio-serial-pci,id=serial0
+ -device virtconsole,chardev=charconsole0,id=console0
+ -chardev socket,id=charconsole0,path=/run/virtcontainers/pods/d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b/console.sock,server,nowait
+ -device nvdimm,id=nv0,memdev=mem0
+ -object memory-backend-file,id=mem0,mem-path=/usr/share/clear-containers/clear-19350-containers.img,size=235929600
+ -device pci-bridge,bus=pci.0,id=pci-bridge-0,chassis_nr=1,shpc=on
+ -device virtserialport,chardev=charch0,id=channel0,name=sh.hyper.channel.0
+ -chardev socket,id=charch0,path=/run/virtcontainers/pods/d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b/hyper.sock,server,nowait
+ -device virtserialport,chardev=charch1,id=channel1,name=sh.hyper.channel.1
+ -chardev socket,id=charch1,path=/run/virtcontainers/pods/d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b/tty.sock,server,nowait
+ -device virtio-9p-pci,fsdev=extra-9p-hyperShared,mount_tag=hyperShared
+ -fsdev local,id=extra-9p-hyperShared,path=/tmp/hyper/shared/pods/d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b,security_model=none
+ -netdev tap,id=network-0,vhost=on,fds=3:4:5:6:7:8:9:10
+ -device driver=virtio-net-pci,netdev=network-0,mac=0a:58:0a:01:0a:03,mq=on,vectors=18
+ -netdev tap,id=network-1,vhost=on,fds=11:12:13:14:15:16:17:18
+ -device driver=virtio-net-pci,netdev=network-1,mac=0a:58:0b:01:01:04,mq=on,vectors=18
+ -netdev tap,id=network-2,vhost=on,fds=19:20:21:22:23:24:25:26
+ -device driver=virtio-net-pci,netdev=network-2,mac=0a:58:0b:01:01:05,mq=on,vectors=18
+ -netdev tap,id=network-3,vhost=on,fds=27:28:29:30:31:32:33:34
+ -device driver=virtio-net-pci,netdev=network-3,mac=0a:58:0a:f8:f6:93,mq=on,vectors=18
+ -rtc base=utc,driftfix=slew
+ -global kvm-pit.lost_tick_policy=discard
+ -vga none
+ -no-user-config
+ -nodefaults
+ -nographic
+ -daemonize
+ -kernel /usr/share/clear-containers/vmlinuz-4.9.60-80.container
+ -append root=/dev/pmem0p1 rootflags=dax,data=ordered,errors=remount-ro rw rootfstype=ext4 tsc=reliable no_timer_check rcupdate.rcu_expedited=1 i8042.direct=1 i8042.dumbkbd=1 i8042.nopnp=1 i8042.noaux=1 noreplace-smp reboot=k panic=1 console=hvc0 console=hvc1 initcall_debug iommu=off cryptomgr.notests net.ifnames=0 debug systemd.show_status=true systemd.log_level=debug init=/usr/lib/systemd/systemd systemd.unit=clear-containers.target systemd.mask=systemd-networkd.service systemd.mask=systemd-networkd.socket ip=::::::d17bffa85322eae0679d0cc3586df81ac507718ff1f1824a33aa50f325fc5a5b::off::

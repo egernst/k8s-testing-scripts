@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: crd-network-test-cc
+  annotations:
+    io.kubernetes.cri-o.TrustedSandbox: "false"
+    networks: '[
+        { "name": "br-net-1" },
+        { "name": "br-net-2" },
+        { "name": "br-net-2" },
+        { "name": "ptp-net" }
+    ]'
+spec:
+  containers:
+  - name: ubuntu
+    image: "ubuntu:14.04"
+    stdin: true
+    tty: true

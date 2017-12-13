@@ -1,0 +1,53 @@
+--- 
+apiVersion: "kubernetes.com/v1" 
+kind: Network 
+metadata: 
+  name: ptp-net 
+plugin: ptp 
+args: '[ 
+    { 
+        "name": "ptp-net", 
+        "type": "ptp", 
+        "ipam": { 
+             "type": "host-local", 
+             "subnet": "10.248.246.144/28", 
+             "routes": [ { "dst": "0.0.0.0/0" } ] 
+        } 
+   } 
+]' 
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: br-net-1
+plugin: bridge
+args: '[
+    {
+        "name": "br-net-1",
+        "type": "bridge",
+        "bridge": "br-net-1",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "10.1.10.0/24"
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: br-net-2
+plugin: bridge
+args: '[
+    {
+        "name": "br-net-2",
+        "type": "bridge",
+        "bridge": "br-net-2",
+        "ipam": {
+            "type": "host-local",
+            "subnet": "11.1.1.0/24"
+        }
+    }
+]'

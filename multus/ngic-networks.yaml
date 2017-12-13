@@ -2,6 +2,24 @@
 apiVersion: "kubernetes.com/v1"
 kind: Network
 metadata:
+  name: ptp-net
+plugin: ptp
+args: '[
+    {
+        "name": "ptp-net",
+        "type": "ptp",
+        "ipam": {
+                  "type": "host-local",
+                  "subnet": "10.248.246.144/28",
+                  "routes": [ { "dst": "0.0.0.0/0" }],
+        }
+    }
+]'
+
+---
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
   name: s11-net
 plugin: bridge
 args: '[

@@ -26,10 +26,10 @@ args: '[
     {
         "name": "my-sriov-net",
         "type": "sriov",
-        "if0": "enp1s0f0"
+        "if0": "enp1s0f0",
         "ipam": {
             "type": "host-local",
-            "subnet": "11.1.1.0/24"
+            "subnet": "11.1.1.0/24",
 	    "routes": [
               { "dst": "0.0.0.0/0" }
 	    ],
