@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   annotations:
     io.kubernetes.cri-o.TrustedSandbox: "false"
+    io.kubernetes.cri.untrusted-workload: "true"  
   name: counter
 spec:
   containers:
@@ -38,3 +39,5 @@ spec:
   volumes:
   - name: varlog
     emptyDir: {}
+  nodeSelector:
+    kata-runtime: "true"
