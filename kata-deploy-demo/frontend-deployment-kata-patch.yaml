@@ -10,17 +10,19 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - guestbook
-              - key: tier
-                operator: In
-                values:
-                - frontend
-            topologyKey: "kubernetes.io/hostname"    
+          - weight: 1
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - guestbook
+                - key: tier
+                  operator: In
+                  values:
+                  - frontend
+              topologyKey: "kubernetes.io/hostname"
       containers:
       - name: php-redis
         image: egernst/gb-frontend-kata
