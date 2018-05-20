@@ -1,0 +1,26 @@
+spec:
+  template:
+    metadata:
+      annotations:
+        io.kubernetes.cri-o.TrustedSandbox: "false"
+        io.kubernetes.cri.untrusted-workload: "true"
+    spec:
+      nodeSelector:
+        kata-runtime: "true"
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - guestbook
+              - key: tier
+                operator: In
+                values:
+                - frontend
+            topologyKey: "kubernetes.io/hostname"    
+      containers:
+      - name: php-redis
+        image: egernst/gb-frontend-kata
