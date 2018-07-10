@@ -10,4 +10,4 @@ spec:
   - name: nginx
     image: nginx
   nodeSelector:
-    kata-runtime: "true"
+    kata-containers.io/kata-runtime: "true"
